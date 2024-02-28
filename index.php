@@ -44,12 +44,16 @@ Dare all’utente anche la possibilità di permettere o meno la ripetizione di c
                 <h1 class="text-capitalize text-secondary  ">strong password generator</h1>
                 <h3 class="text-capitalize text-white">genera una password sicura </h3>
             </div>
+
+
+<!-- ----------------------------------- PHP ---------------------------------------- -->
+
             <div class=" rounded-2 text-secondary  bg-info-subtle p-3 ">
                 <?php
                 
                 session_start();
 
-                if (isset($_GET['generator']) && isset($_GET['yes']) && !isset($_SESSION['password_generated'])) {
+                if (isset($_GET['generator']) && isset($_GET['duplicazione']) && !isset($_SESSION['password_generated'])) {
                   
                     $_SESSION['password_generated'] = true;
 
@@ -60,7 +64,7 @@ Dare all’utente anche la possibilità di permettere o meno la ripetizione di c
                             
                             include_once __DIR__ . '/functions.php';
 
-                            $duplica_caratteri = isset($_GET['yes']) && $_GET['yes'] == 1;
+                            $duplica_caratteri = ($_GET['duplicazione'] == 1);
                             $password_generata = generatePassword($lunghezza, $duplica_caratteri);
 
                            
@@ -84,6 +88,10 @@ Dare all’utente anche la possibilità di permettere o meno la ripetizione di c
 
             </div>
 
+
+
+<!-- ----------------------------------- PHP ---------------------------------------- -->
+
             <div class="border border-1  rounded-2 p-3 bg-white mt-3">
                 <form class="d-flex" action="index.php" method="get">
                     <div class="col mt-3 ">
@@ -103,11 +111,11 @@ Dare all’utente anche la possibilità di permettere o meno la ripetizione di c
 
                             <div class="d-flex flex-column gap-2 justify-content-end col-3  ">
                                 <div class="d-flex gap-1 ">
-                                    <input class="rounded-5 " type="radio" name="yes" id="yes" class="form-control" />
+                                    <input class="rounded-5 " type="radio" name="duplicazione" id="si" class="form-control" value="1" />
                                     <span>Si</span>
                                 </div>
                                 <div class="d-flex gap-1">
-                                    <input class="rounded-5 " type="radio" name="no" id="no" class="form-control" />
+                                    <input class="rounded-5 " type="radio" name="duplicazione" id="no" class="form-control" value="0"  />
                                     <span>No</span>
                                 </div>
                             </div>

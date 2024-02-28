@@ -11,7 +11,9 @@ function generatePassword($lunghezza, $duplica_caratteri){
     $caratteri = 'abcdefghijlmnopqrstuvwxyzABCDEFGHIJLMNOPQRSTUVWXYZ0123456789_?*+&%!#@';
 
     if($duplica_caratteri){
+        
         $caratteri .= $caratteri;
+       
     }
 
     $len_caratteri = strlen($caratteri);
@@ -20,8 +22,8 @@ function generatePassword($lunghezza, $duplica_caratteri){
 
 
     for($i = 0; $i < $lunghezza; $i++ ){
-        $numero_random = rand(0,$len_caratteri -1 );
-        $password_random.= $caratteri[$numero_random];
+        $numero_random = rand(0, $len_caratteri - 1 );
+        $password_random .= $caratteri[$numero_random];
     }
 
     return $password_random;
